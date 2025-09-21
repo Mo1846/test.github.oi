@@ -1,0 +1,284 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: #f5f5f5;
+}
+
+.pages-container {
+    position: relative;
+    width: 100vw;
+    height: auto;
+    min-height: 100vh;
+    padding-bottom: 60px; /* 底部波浪留白 */
+    overflow: hidden;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #3586ff;
+    min-height: 100px;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    background: white;
+    transition: transform 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 页面切换动画 */
+.page:not(.active) {
+    transform: translateX(200%);
+}
+
+.page.prev {
+    transform: translateX(-100%);
+}
+
+.page.active {
+    transform: translateX(0);
+}
+
+/* 简介页样式 */
+
+.intro-page {
+    overflow-x: hidden;
+}
+
+.intro-page h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    top: 10px;
+}
+
+.intro-text {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 40px;
+    text-align: center;
+    top: 40px;
+
+}
+
+/* 题目页样式 */
+.questions-container {
+    overflow: hidden;
+}
+
+.question-page {
+    display: none;
+}
+
+.question-page.active {
+    display: flex;
+}
+
+.question-title {
+    font-size: 20px;
+    margin-bottom: 30px;
+    color: #2c3e50;
+    text-align: center;
+}
+
+.option-btn {
+    width: 100%;
+    padding: 15px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: white;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.option-btn:hover, .option-btn:active {
+    background: #3498db;
+    border-color: #3498db;
+}
+
+.option-btn.selected {
+    background: #3498db;
+    border-color: #3498db;
+    color: white;
+}
+
+/* 按钮容器 */
+.btn-container {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    flex: 1;
+    padding: 12px 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 95%;
+}
+
+.start-btn, .restart-btn {
+    background: #3498db;
+    color: white;
+    max-height: 50px;
+    width: 50%;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.next-btn, .prev-btn {
+    background: #ecf0f1;
+    color: #333;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+/* 结果页样式 */
+.page.result-page {
+    position: relative;
+    min-height: 200%;    /* 最小高度为视口高度 */
+    overflow: scroll;         /* 内容超出时显示滚动条 */
+    max-width: 800px;       /* 父容器最大宽度（限制整体宽度） */
+    margin: auto;         /* 父容器水平居中 */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* 覆盖通用 .page 的 justify-content: center */
+
+}
+
+.result-page h1 {
+    font-size: 24px;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    color: #6593c2;
+}
+
+.score {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+#recommandation {
+    color: #6593c2;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.result-desc {
+    font-size: 16px;
+    color: #444;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    line-height: 1.8;
+    overflow: scroll;         /* 内容超出时显示滚动条 */
+}
+
+.result-image {
+    width: 95%;          /* 宽度占满父容器 */
+    height: 400px;   /* 最大高度限制（避免图片过高） */
+    margin-top: 20px;
+    margin-bottom: 10px;
+    object-fit: contain;     
+    margin: 20px 0;       /* 上下边距 */
+    border-radius: 8px;   /* 圆角 */
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.5); /* 阴影 */
+    opacity: 1 !important; /* 强制显示（防止被覆盖） */
+}
+
+/* 首页波浪 */
+footer .wave {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: url(wave.png);
+    background-size: 1000px 100px;
+}
+
+footer .wave#wave1 {
+    z-index: 1000;
+    opacity: 1;
+    bottom: 0;
+    animation: animateWave 4s linear infinite;
+}
+
+footer .wave#wave2 {
+    z-index: 999;
+    opacity: 0.5;
+    bottom: 10px;
+    animation: animateWave2 4s linear infinite;
+}
+
+footer .wave#wave3 {
+    z-index: 1000;
+    opacity: 0.2;
+    bottom: 15px;
+    animation: animateWave 3s linear infinite;
+}
+
+footer .wave#wave4 {
+    z-index: 999;
+    opacity: 0.7;
+    bottom: 20px;
+    animation: animateWave2 3s linear infinite;
+}
+
+@keyframes animateWave {
+    0% {
+        background-position: 1000px;
+    }
+
+    100% {
+        background-position-x: 0px;
+    }
+}
+
+@keyframes animateWave2 {
+    0% {
+        background-position: 0px;
+    }
+
+    100% {
+        background-position-x: 1000px;
+    }
+}

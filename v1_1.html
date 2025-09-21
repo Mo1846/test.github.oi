@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>公募基金职业倾向小测试</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    
+</head>
+
+<body>
+    <div class="pages-container">
+        <!-- 简介页 -->
+        <div class="page intro-page active">
+            <h1>公募行业职业倾向小测试</h1>
+            <p class="intro-text">本测试通过几道简单问题，<br>帮助你了解自己的职业倾向。<br>请根据第一直觉选择最符合你的选项，<br>测试结果仅供参考~</p>
+            <button class="btn start-btn">开始测试</button>
+            <footer class="footer">
+                <div class="waves">
+                    <div class="wave" id="wave1"></div>
+                    <div class="wave" id="wave2"></div>
+                    <div class="wave" id="wave3"></div>
+                    <div class="wave" id="wave4"></div>
+                </div>
+        </div>
+
+        <!-- 题目容器（动态生成） -->
+        <div class="questions-container"></div>
+
+        <!-- 结果页 -->
+        <div class="page result-page">
+            <h1>测试结果</h1>
+            <div class="score">你的潜在职业属性是：<span id="recommandation">0</span></div>
+            <img src="./pic/default.jpg" alt="测试结果配图" class="result-image" style = "width: auto" />
+            <p class="result-desc" id="result-desc">正在分析你的职业倾向...</p>
+            <button class="btn restart-btn">重新测试</button>
+
+        </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
